@@ -1,11 +1,11 @@
-// service-worker.js
 self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
+  console.log('install');
 });
 
 self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate');
+  console.log('activate');
 });
 
-// 現状では、この処理を書かないとService Workerが有効と判定されないようです
-self.addEventListener('fetch', function(event) {});
+self.addEventListener('fetch', function(e) {
+  console.log('fetch');
+});
