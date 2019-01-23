@@ -11,35 +11,68 @@
    }
   </script>
 
-  <script>
+<script>
 
-document.addEventListener("DOMContentLoaded", function(){
-			  	var saveButton = document.getElementById('save_button');
-			  	var deferredPrompt;
-			 window.addEventListener('beforeinstallprompt', function(e) {
-			    console.log('インストールバナーの表示をキャンセルします');
-			    e.preventDefault();
-			    saveButton.removeAttribute('disabled');
-			    deferredPrompt = e;
-			  });
+	document.addEventListener("DOMContentLoaded", function(){
+		var saveButton = document.getElementById('save_button');
+		var deferredPrompt;
 
-			saveButton.addEventListener('click', function() {
-				console.log('押されました');
-			    if (deferredPrompt !== undefined) {
-			      deferredPrompt.prompt();
-			      deferredPrompt.userChoice.then(function(result) {
-			        if (result.outcome == 'dismissed') {
-			          console.log('キャンセルされました');
-			        } else {
-			          console.log('インストールされました');
-			        }
-			        deferredPrompt = null;
-			        saveButton.addAttribute('disabled');
-			      });
-			    }
-			  });
-}, false);
-  </script>
+		console.log(deferredPrompt);
+
+		window.addEventListener('beforeinstallprompt', function(e) {
+		console.log('インストールバナーの表示をキャンセルします');
+		e.preventDefault();
+		// saveButton.removeAttribute('disabled');
+		deferredPrompt = e;
+		showAddToHomeScreen();
+		});
+
+		function showAddToHomeScreen() {
+
+		  saveButton.style.display = "block";
+		  saveButton.addEventListener("click", addToHomeScreen);
+
+		}
+
+		function addToHomeScreen() {
+
+		  // hide our user interface that shows our A2HS button
+		  saveButton.style.display = 'none';
+
+		  // Show the prompt
+		  deferredPrompt.prompt();
+
+		  // Wait for the user to respond to the prompt
+		  deferredPrompt.userChoice
+		    .then(function(choiceResult){
+
+		  if (choiceResult.outcome === 'accepted') {
+		    console.log('User accepted the A2HS prompt');
+		  } else {
+		    console.log('User dismissed the A2HS prompt');
+		  }
+
+		  deferredPrompt = null;
+
+		});
+		}
+		// saveButton.addEventListener('click', function() {
+		// if (deferredPrompt !== undefined) {
+		//   deferredPrompt.prompt();
+		//   deferredPrompt.userChoice.then(function(result) {
+		//     if (result.outcome == 'dismissed') {
+		//       console.log('キャンセルされました');
+		//     } else {
+		//       console.log('インストールされました');
+		//     }
+		//     deferredPrompt = null;
+		//     saveButton.addAttribute('disabled');
+		//   });
+		// }
+		// });
+	}, false);
+</script>
+
   <title>Hello PWA.</title>
   <style>
     body {
