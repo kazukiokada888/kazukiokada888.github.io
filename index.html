@@ -3,6 +3,10 @@
 <head>
   <!-- manifest.jsonを呼び出しています -->
   <link rel="manifest" href="./manifest.json">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="cly7796.net PWA sample">
+	<link rel="apple-touch-icon" href="./icon-192.png">
 
   <script>
     // service workerが有効なら、service-worker.js を登録します
@@ -56,20 +60,6 @@
 
 		});
 		}
-		// saveButton.addEventListener('click', function() {
-		// if (deferredPrompt !== undefined) {
-		//   deferredPrompt.prompt();
-		//   deferredPrompt.userChoice.then(function(result) {
-		//     if (result.outcome == 'dismissed') {
-		//       console.log('キャンセルされました');
-		//     } else {
-		//       console.log('インストールされました');
-		//     }
-		//     deferredPrompt = null;
-		//     saveButton.addAttribute('disabled');
-		//   });
-		// }
-		// });
 	}, false);
 </script>
 
@@ -81,7 +71,7 @@
       vertical-align: middle;
     }
     .image {
-      width: 80%; 
+      width: 80%;
       margin: auto;
       display: block;
     }
