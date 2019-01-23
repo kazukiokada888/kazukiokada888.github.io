@@ -12,5 +12,6 @@
       "type": "image/png"
     }],
   "start_url": "./?utm_source=homescreen",
-  "display": "minimal-ui"
+  // "display": "minimal-ui"
+  "display": "browser"
 }
