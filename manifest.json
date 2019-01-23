@@ -12,6 +12,6 @@
       "type": "image/png"
     }],
   "start_url": "./index.html",
-  // "display": "minimal-ui"
-  "display": "browser"
+  "display": "minimal-ui"
+  // "display": "browser"
 }
