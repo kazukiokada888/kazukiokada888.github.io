@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			  });
 
 			saveButton.addEventListener('click', function() {
+				console.log('押されました');
 			    if (deferredPrompt !== undefined) {
 			      deferredPrompt.prompt();
 			      deferredPrompt.userChoice.then(function(result) {
