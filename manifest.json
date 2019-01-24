@@ -15,10 +15,4 @@
   "start_url": "./index.html",
   "display": "minimal-ui"
   // "display": "browser"
-
-  // "name": "PWA Sample",
-  // "short_name": "PWA",
-  // "start_url": "./index.html",
-  // "display": "minimal-ui"
-  // // "display": "browser"
 }
