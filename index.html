@@ -30,6 +30,9 @@
   <button id="save_button">Add to home screen</button>
   </div>
 
+<p style="margin-top: 50px;text-align: center;">
+	<a href="#" id="bookmarkme">お気に入り追加</a>
+</p>
 
 <script>
 	if ('serviceWorker' in navigator) {
@@ -85,6 +88,23 @@
 		});
 		}
 	}, false);
+</script>
+
+<script>
+	$(function() {
+	    $('#bookmarkme,#bookmarkme2').click(function() {
+	        if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+	            window.sidebar.addPanel(document.title,window.location.href,'');
+	        } else if(window.external && ('AddFavorite' in window.external)) { // IE Favorite
+	            window.external.AddFavorite(location.href,document.title); 
+	        } else if(window.opera && window.print) { // Opera Hotlist
+	            this.title=document.title;
+	            return true;
+	        } else { // webkit - safari/chrome
+	            alert('ブラウザ付属のブックマーク機能をご利用ください。' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? '【 Command 】' : '【 Ctrl 】') + ' + 【 D 】ボタンを押すとブックマークできます。');
+	        }
+	    });
+	});
 </script>
 </body>
 </html>
